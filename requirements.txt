@@ -1,0 +1,6 @@
+python>=3.8
+streamlit
+audio-recorder-streamlit
+streamlit-float
+openai
+python-dotenv
