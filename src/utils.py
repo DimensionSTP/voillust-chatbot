@@ -7,7 +7,7 @@ class Utils():
     def __init__(self, api_key: str):
         self.client = OpenAI(api_key=api_key)
 
-    def stt(self, audio_file_path) -> str:
+    def stt(self, audio_file_path: str) -> str:
         with open(audio_file_path, "rb") as audio_file:
             transcript = self.client.audio.transcriptions.create(
                 model="whisper-1",
@@ -20,7 +20,7 @@ class Utils():
         system_message = [
             {
                 "role": "system", 
-                "content": "You are an helpful AI chatbot, that answers questions asked by User. In particular, answer in the direction of specifying the picture that the user wants to draw."
+                "content": "You are a helpful AI chatbot, that answers questions asked by User. In particular, answer in the direction of specifying the picture that the user wants to draw."
             }
         ]
         messages = system_message + messages
@@ -41,7 +41,7 @@ class Utils():
             response.stream_to_file(webm_file_path)
         return webm_file_path
 
-    def autoplay_audio(self, file_path: str):
+    def autoplay_audio(self, file_path: str) -> None:
         with open(file_path, "rb") as f:
             data = f.read()
         b64 = base64.b64encode(data).decode("utf-8")
@@ -52,7 +52,7 @@ class Utils():
         """
         st.markdown(md, unsafe_allow_html=True)
 
-    def get_image(self, prompt: str):
+    def get_image(self, prompt: str) -> None:
         response = self.client.images.generate(
             model="dall-e-3",
             prompt=prompt,

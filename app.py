@@ -14,7 +14,7 @@ utils = Utils(api_key=api_key)
 
 float_init()
 
-def initialize_session_state():
+def initialize_session_state() -> None:
     if "messages" not in st.session_state:
         st.session_state.messages = [
             {"role": "assistant", "content": "오늘도 도와드릴게요!"}
